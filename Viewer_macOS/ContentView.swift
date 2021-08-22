@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        MessageCenterScreen()
+			.frame(minWidth: 300, minHeight: 500)
+			.frame(maxWidth: .infinity)
+			.frame(maxHeight: .infinity)
     }
 }
 

@@ -11,20 +11,49 @@
 		B5231D4026D260B1009542D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5231D3F26D260B1009542D3 /* ContentView.swift */; };
 		B5231D4226D260B2009542D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5231D4126D260B2009542D3 /* Assets.xcassets */; };
 		B5231D4526D260B2009542D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5231D4426D260B2009542D3 /* Preview Assets.xcassets */; };
+		B5231D5226D26176009542D3 /* ServerConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5231D5026D26176009542D3 /* ServerConnection.swift */; };
+		B5231D5326D26176009542D3 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5231D5126D26176009542D3 /* Server.swift */; };
+		B5231D5B26D2630B009542D3 /* SampleLogger_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5231D5A26D2630B009542D3 /* SampleLogger_iOSApp.swift */; };
+		B5231D5D26D2630B009542D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5231D5C26D2630B009542D3 /* ContentView.swift */; };
+		B5231D5F26D2630B009542D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5231D5E26D2630B009542D3 /* Assets.xcassets */; };
+		B5231D6226D2630B009542D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5231D6126D2630B009542D3 /* Preview Assets.xcassets */; };
+		B5231D6826D263D3009542D3 /* SimpleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5231D6726D263D3009542D3 /* SimpleLogger.swift */; };
+		B5231D6B26D26EF2009542D3 /* MessageCenterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5231D6926D26EEE009542D3 /* MessageCenterScreen.swift */; };
+		B5231D6D26D26F9F009542D3 /* ConnectionListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5231D6C26D26F9F009542D3 /* ConnectionListRow.swift */; };
+		B5231D6F26D27018009542D3 /* ConnectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5231D6E26D27018009542D3 /* ConnectionListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B5231D3A26D260B1009542D3 /* SimpleLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5231D3A26D260B1009542D3 /* Viewer_macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Viewer_macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5231D3D26D260B1009542D3 /* SimpleLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLogApp.swift; sourceTree = "<group>"; };
 		B5231D3F26D260B1009542D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B5231D4126D260B2009542D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5231D4426D260B2009542D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B5231D4626D260B2009542D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5231D4726D260B2009542D3 /* SimpleLog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLog.entitlements; sourceTree = "<group>"; };
+		B5231D5026D26176009542D3 /* ServerConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnection.swift; sourceTree = "<group>"; };
+		B5231D5126D26176009542D3 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		B5231D5826D2630B009542D3 /* SampleLogger_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleLogger_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5231D5A26D2630B009542D3 /* SampleLogger_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLogger_iOSApp.swift; sourceTree = "<group>"; };
+		B5231D5C26D2630B009542D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B5231D5E26D2630B009542D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B5231D6126D2630B009542D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B5231D6326D2630B009542D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5231D6726D263D3009542D3 /* SimpleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLogger.swift; sourceTree = "<group>"; };
+		B5231D6926D26EEE009542D3 /* MessageCenterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCenterScreen.swift; sourceTree = "<group>"; };
+		B5231D6C26D26F9F009542D3 /* ConnectionListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionListRow.swift; sourceTree = "<group>"; };
+		B5231D6E26D27018009542D3 /* ConnectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B5231D3726D260B1009542D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5231D5526D2630B009542D3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,7 +66,9 @@
 		B5231D3126D260B1009542D3 = {
 			isa = PBXGroup;
 			children = (
-				B5231D3C26D260B1009542D3 /* SimpleLog */,
+				B5231D4E26D26176009542D3 /* Shared */,
+				B5231D3C26D260B1009542D3 /* Viewer_macOS */,
+				B5231D5926D2630B009542D3 /* SampleLogger_iOS */,
 				B5231D3B26D260B1009542D3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,22 +76,20 @@
 		B5231D3B26D260B1009542D3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B5231D3A26D260B1009542D3 /* SimpleLog.app */,
+				B5231D3A26D260B1009542D3 /* Viewer_macOS.app */,
+				B5231D5826D2630B009542D3 /* SampleLogger_iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B5231D3C26D260B1009542D3 /* SimpleLog */ = {
+		B5231D3C26D260B1009542D3 /* Viewer_macOS */ = {
 			isa = PBXGroup;
 			children = (
 				B5231D3D26D260B1009542D3 /* SimpleLogApp.swift */,
 				B5231D3F26D260B1009542D3 /* ContentView.swift */,
-				B5231D4126D260B2009542D3 /* Assets.xcassets */,
-				B5231D4626D260B2009542D3 /* Info.plist */,
-				B5231D4726D260B2009542D3 /* SimpleLog.entitlements */,
-				B5231D4326D260B2009542D3 /* Preview Content */,
+				B5231D4D26D260DC009542D3 /* Resources */,
 			);
-			path = SimpleLog;
+			path = Viewer_macOS;
 			sourceTree = "<group>";
 		};
 		B5231D4326D260B2009542D3 /* Preview Content */ = {
@@ -71,12 +100,64 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		B5231D4D26D260DC009542D3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B5231D4126D260B2009542D3 /* Assets.xcassets */,
+				B5231D4626D260B2009542D3 /* Info.plist */,
+				B5231D4726D260B2009542D3 /* SimpleLog.entitlements */,
+				B5231D4326D260B2009542D3 /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B5231D4E26D26176009542D3 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B5231D4F26D26176009542D3 /* Server */,
+				B5231D6926D26EEE009542D3 /* MessageCenterScreen.swift */,
+				B5231D6E26D27018009542D3 /* ConnectionListView.swift */,
+				B5231D6C26D26F9F009542D3 /* ConnectionListRow.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		B5231D4F26D26176009542D3 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				B5231D5026D26176009542D3 /* ServerConnection.swift */,
+				B5231D5126D26176009542D3 /* Server.swift */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		B5231D5926D2630B009542D3 /* SampleLogger_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				B5231D5A26D2630B009542D3 /* SampleLogger_iOSApp.swift */,
+				B5231D5C26D2630B009542D3 /* ContentView.swift */,
+				B5231D6726D263D3009542D3 /* SimpleLogger.swift */,
+				B5231D5E26D2630B009542D3 /* Assets.xcassets */,
+				B5231D6326D2630B009542D3 /* Info.plist */,
+				B5231D6026D2630B009542D3 /* Preview Content */,
+			);
+			path = SampleLogger_iOS;
+			sourceTree = "<group>";
+		};
+		B5231D6026D2630B009542D3 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B5231D6126D2630B009542D3 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B5231D3926D260B1009542D3 /* SimpleLog */ = {
+		B5231D3926D260B1009542D3 /* Viewer_macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B5231D4A26D260B2009542D3 /* Build configuration list for PBXNativeTarget "SimpleLog" */;
+			buildConfigurationList = B5231D4A26D260B2009542D3 /* Build configuration list for PBXNativeTarget "Viewer_macOS" */;
 			buildPhases = (
 				B5231D3626D260B1009542D3 /* Sources */,
 				B5231D3726D260B1009542D3 /* Frameworks */,
@@ -86,9 +167,26 @@
 			);
 			dependencies = (
 			);
-			name = SimpleLog;
+			name = Viewer_macOS;
 			productName = SimpleLog;
-			productReference = B5231D3A26D260B1009542D3 /* SimpleLog.app */;
+			productReference = B5231D3A26D260B1009542D3 /* Viewer_macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B5231D5726D2630B009542D3 /* SampleLogger_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5231D6426D2630B009542D3 /* Build configuration list for PBXNativeTarget "SampleLogger_iOS" */;
+			buildPhases = (
+				B5231D5426D2630B009542D3 /* Sources */,
+				B5231D5526D2630B009542D3 /* Frameworks */,
+				B5231D5626D2630B009542D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SampleLogger_iOS;
+			productName = SampleLogger_iOS;
+			productReference = B5231D5826D2630B009542D3 /* SampleLogger_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -101,6 +199,9 @@
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					B5231D3926D260B1009542D3 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					B5231D5726D2630B009542D3 = {
 						CreatedOnToolsVersion = 12.5;
 					};
 				};
@@ -118,7 +219,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B5231D3926D260B1009542D3 /* SimpleLog */,
+				B5231D3926D260B1009542D3 /* Viewer_macOS */,
+				B5231D5726D2630B009542D3 /* SampleLogger_iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -133,6 +235,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5231D5626D2630B009542D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5231D6226D2630B009542D3 /* Preview Assets.xcassets in Resources */,
+				B5231D5F26D2630B009542D3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -141,7 +252,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5231D4026D260B1009542D3 /* ContentView.swift in Sources */,
+				B5231D5226D26176009542D3 /* ServerConnection.swift in Sources */,
+				B5231D5326D26176009542D3 /* Server.swift in Sources */,
+				B5231D6B26D26EF2009542D3 /* MessageCenterScreen.swift in Sources */,
+				B5231D6D26D26F9F009542D3 /* ConnectionListRow.swift in Sources */,
 				B5231D3E26D260B1009542D3 /* SimpleLogApp.swift in Sources */,
+				B5231D6F26D27018009542D3 /* ConnectionListView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5231D5426D2630B009542D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5231D5D26D2630B009542D3 /* ContentView.swift in Sources */,
+				B5231D5B26D2630B009542D3 /* SampleLogger_iOSApp.swift in Sources */,
+				B5231D6826D263D3009542D3 /* SimpleLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,14 +394,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = SimpleLog/SimpleLog.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Viewer_macOS/Resources/SimpleLog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"SimpleLog/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Viewer_macOS/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = YY6CWUX533;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = SimpleLog/Info.plist;
+				INFOPLIST_FILE = Viewer_macOS/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -292,14 +418,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = SimpleLog/SimpleLog.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Viewer_macOS/Resources/SimpleLog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"SimpleLog/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Viewer_macOS/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = YY6CWUX533;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = SimpleLog/Info.plist;
+				INFOPLIST_FILE = Viewer_macOS/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -308,6 +434,53 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.standalone.SimpleLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B5231D6526D2630B009542D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SampleLogger_iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = YY6CWUX533;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SampleLogger_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.standalone.SampleLogger-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B5231D6626D2630B009542D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SampleLogger_iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = YY6CWUX533;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SampleLogger_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.standalone.SampleLogger-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -323,11 +496,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B5231D4A26D260B2009542D3 /* Build configuration list for PBXNativeTarget "SimpleLog" */ = {
+		B5231D4A26D260B2009542D3 /* Build configuration list for PBXNativeTarget "Viewer_macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B5231D4B26D260B2009542D3 /* Debug */,
 				B5231D4C26D260B2009542D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5231D6426D2630B009542D3 /* Build configuration list for PBXNativeTarget "SampleLogger_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5231D6526D2630B009542D3 /* Debug */,
+				B5231D6626D2630B009542D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
