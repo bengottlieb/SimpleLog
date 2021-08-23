@@ -24,6 +24,7 @@
 		B5231D7126D3B4DA009542D3 /* ServerConnection+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5231D7026D3B4DA009542D3 /* ServerConnection+Parsing.swift */; };
 		B5C9568B26D282AA00C3793E /* SimpleLogger.Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9568A26D282AA00C3793E /* SimpleLogger.Message.swift */; };
 		B5C9568D26D284B900C3793E /* SimpleLogger.DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9568C26D284B900C3793E /* SimpleLogger.DeviceInfo.swift */; };
+		B5C9568F26D3C9AE00C3793E /* ConnectionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9568E26D3C9AE00C3793E /* ConnectionHistoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		B5231D7026D3B4DA009542D3 /* ServerConnection+Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServerConnection+Parsing.swift"; sourceTree = "<group>"; };
 		B5C9568A26D282AA00C3793E /* SimpleLogger.Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLogger.Message.swift; sourceTree = "<group>"; };
 		B5C9568C26D284B900C3793E /* SimpleLogger.DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLogger.DeviceInfo.swift; sourceTree = "<group>"; };
+		B5C9568E26D3C9AE00C3793E /* ConnectionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionHistoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				B5231D6926D26EEE009542D3 /* MessageCenterScreen.swift */,
 				B5231D6E26D27018009542D3 /* ConnectionListView.swift */,
 				B5231D6C26D26F9F009542D3 /* ConnectionListRow.swift */,
+				B5C9568E26D3C9AE00C3793E /* ConnectionHistoryView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				B5231D6B26D26EF2009542D3 /* MessageCenterScreen.swift in Sources */,
 				B5231D6D26D26F9F009542D3 /* ConnectionListRow.swift in Sources */,
 				B5231D3E26D260B1009542D3 /* SimpleLogApp.swift in Sources */,
+				B5C9568F26D3C9AE00C3793E /* ConnectionHistoryView.swift in Sources */,
 				B5231D6F26D27018009542D3 /* ConnectionListView.swift in Sources */,
 				B5231D7126D3B4DA009542D3 /* ServerConnection+Parsing.swift in Sources */,
 			);

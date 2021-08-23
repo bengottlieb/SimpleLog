@@ -15,17 +15,19 @@ extension ServerConnection {
 		let raw = Self.leftBracket + data + Self.rightBracket
 		
 		do {
-			guard let json = try JSONSerialization.jsonObject(with: raw, options: [.fragmentsAllowed]) as? [[String: Any]] else {
+			guard let json = try JSONSerialization.jsonObject(with: raw, options: [.fragmentsAllowed]) as? [Any] else {
 				print("Unable to parse: \(String(data: data, encoding: .utf8) ?? "some data")")
 				return
 			}
 			
-			for dict in json {
-				guard let kind = dict["kind"] as? String else {
-					print("Unable to parse: \(dict)")
-					continue
+			for item in json {
+				if let string = item as? String {
+					receivedMessages.append(string)
+				} else if let dict = item as? [String: Any], let kind = dict["kind"] as? String {
+					print("Got: \(kind)")
+				} else {
+					print("Unable to parse: \(item)")
 				}
-				print("Got: \(kind)")
 			}
 		} catch {
 			print("Unable to parse: \(String(data: data, encoding: .utf8) ?? "some data"), \n\(error)")

@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct ConnectionListView: View {
+	@Binding var selected: ServerConnection?
 	@ObservedObject var server = Server.instance
     var body: some View {
-		ForEach(server.allConnections) { connection in
-			ConnectionListRow(connection: connection)
+		ScrollView() {
+			LazyVStack() {
+				ForEach(server.allConnections) { connection in
+					ConnectionListRow(connection: connection, selected: $selected)
+				}
+			}
 		}
 	}
-}
-
-struct ConnectionListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConnectionListView()
-    }
 }

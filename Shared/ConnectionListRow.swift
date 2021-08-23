@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ConnectionListRow: View {
 	@ObservedObject var connection: ServerConnection
+	@Binding var selected: ServerConnection?
 	var body: some View {
 		HStack() {
 			VStack() {
@@ -29,6 +30,10 @@ struct ConnectionListRow: View {
 					.padding()
 			}
 			.buttonStyle(PlainButtonStyle())
+		}
+		.background(selected == connection ? Color.gray : Color.white)
+		.onTapGesture {
+			selected = connection
 		}
 	}
 }

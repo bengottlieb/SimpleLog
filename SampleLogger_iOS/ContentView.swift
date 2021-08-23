@@ -17,9 +17,7 @@ struct ContentView: View {
 			TextField("Message", text: $message)
 			
 			Button("Send") {
-				SimpleLogger.instance.send(message + "1")
-				SimpleLogger.instance.send(message + "2")
-				SimpleLogger.instance.send(message + "3")
+				SimpleLogger.instance.send(message)
 			}
 		}
 		

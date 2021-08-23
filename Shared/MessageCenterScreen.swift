@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct MessageCenterScreen: View {
+	@State var selectedConnection: ServerConnection?
 	var body: some View {
-		ConnectionListView()
+		HStack() {
+			ConnectionListView(selected: $selectedConnection)
+				.frame(width: 250)
+			if let selected = selectedConnection {
+				ConnectionHistoryView(connection: selected)
+			} else {
+				Spacer()
+			}
+		}
 	}
 }
 
