@@ -9,18 +9,21 @@ import Foundation
 
 import Foundation
 import Network
+import MultipeerConnectivity
 
 public class Server: ObservableObject {
 	public static var instance: Server!
 	
 	let port: NWEndpoint.Port
 	let listener: NWListener
+	var advertiser: MCNearbyServiceAdvertiser?
 	
 	var allConnections: [ServerConnection] { pastConnections + activeConnections.values.sorted() }
 	var pastConnections: [ServerConnection] = []
 	
 	public static var defaultPort: UInt16 = 8888
 	private var activeConnections: [Int: ServerConnection] = [:]
+	lazy var peerID = generateLocalPeerID()
 	
 	public static func start(at port: UInt16 = Server.defaultPort) throws {
 		if let current = instance {

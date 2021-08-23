@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct SampleLogger_iOSApp: App {
 	init() {
-		SimpleLogger.configure(host: "localhost", on: 8888)
+		SimpleLogger.configure()
 	}
     var body: some Scene {
         WindowGroup {

@@ -7,31 +7,43 @@
 
 import Foundation
 import Network
+import MultipeerConnectivity
 
-public class SimpleLogger: ObservableObject {
+public class SimpleLogger: NSObject, ObservableObject {
 	static public var instance: SimpleLogger!
 	public static var defaultPort: UInt16 = 8888
 	let queue = DispatchQueue(label: "simpleLoggerQueue")
 	var pendingMessages: [SimpleMessage] = []
 	public var isConnected: Bool { nwConnection?.state == .ready }
 	var isPolling = false
-	
-	static public func configure(host: String, on port: UInt16 = SimpleLogger.defaultPort) {
+	lazy var peerID = generateLocalPeerID()
+	var browser: MCNearbyServiceBrowser?
+
+	static public func configure(host: String? = nil, on port: UInt16? = nil) {
 		instance = SimpleLogger(host: host, port: port)
 	}
 	
-	let host: NWEndpoint.Host
-	let port: NWEndpoint.Port
+	var host: NWEndpoint.Host?
+	var port: NWEndpoint.Port?
 	var nwConnection: NWConnection!
 	
-	init(host: String, port: UInt16) {
+	init(host: String?, port: UInt16?) {
+		super.init()
+		if let host = host, let port = port {
+			load(host: host, port: port)
+		} else {
+			browse()
+		}
+	}
+
+	func load(host: String, port: UInt16) {
 		self.host = NWEndpoint.Host(host)
-		self.port = NWEndpoint.Port(rawValue: port)!
+		self.port = NWEndpoint.Port(rawValue: port)
 	}
 	
 	func start() {
-		if nwConnection?.state == .ready { return }
-		nwConnection = NWConnection(host: self.host, port: self.port, using: .tcp)
+		guard let host = host, let port = port, nwConnection?.state != .ready else { return }
+		nwConnection = NWConnection(host: host, port: port, using: .tcp)
 		nwConnection.stateUpdateHandler = connectionStateDidChange(to:)
 		nwConnection.start(queue: queue)
 		setupReceive()
@@ -136,8 +148,8 @@ public class SimpleLogger: ObservableObject {
 	}
 	
 	private func stop(error: Error?) {
-		self.nwConnection.stateUpdateHandler = nil
-		self.nwConnection.cancel()
+		self.nwConnection?.stateUpdateHandler = nil
+		self.nwConnection?.cancel()
 		self.nwConnection = nil
 	}
 }

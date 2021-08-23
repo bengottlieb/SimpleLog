@@ -25,6 +25,9 @@
 		B5C9568B26D282AA00C3793E /* SimpleLogger.Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9568A26D282AA00C3793E /* SimpleLogger.Message.swift */; };
 		B5C9568D26D284B900C3793E /* SimpleLogger.DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9568C26D284B900C3793E /* SimpleLogger.DeviceInfo.swift */; };
 		B5C9568F26D3C9AE00C3793E /* ConnectionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9568E26D3C9AE00C3793E /* ConnectionHistoryView.swift */; };
+		B5E0F8DA26D3D9FE00136511 /* Server+Advertising.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0F8D926D3D9FE00136511 /* Server+Advertising.swift */; };
+		B5E0F8DC26D3DE3100136511 /* SimpleLogger+Browsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0F8DB26D3DE3100136511 /* SimpleLogger+Browsing.swift */; };
+		B5E0F8DF26D40F4C00136511 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E0F8DE26D40F4C00136511 /* NetworkExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,10 @@
 		B5C9568A26D282AA00C3793E /* SimpleLogger.Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLogger.Message.swift; sourceTree = "<group>"; };
 		B5C9568C26D284B900C3793E /* SimpleLogger.DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLogger.DeviceInfo.swift; sourceTree = "<group>"; };
 		B5C9568E26D3C9AE00C3793E /* ConnectionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionHistoryView.swift; sourceTree = "<group>"; };
+		B5E0F8D926D3D9FE00136511 /* Server+Advertising.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Server+Advertising.swift"; sourceTree = "<group>"; };
+		B5E0F8DB26D3DE3100136511 /* SimpleLogger+Browsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimpleLogger+Browsing.swift"; sourceTree = "<group>"; };
+		B5E0F8DE26D40F4C00136511 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		B5E0F8E126D41D8000136511 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5E0F8DF26D40F4C00136511 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,11 +82,13 @@
 		B5231D3126D260B1009542D3 = {
 			isa = PBXGroup;
 			children = (
+				B5E0F8E126D41D8000136511 /* Package.swift */,
 				B5C9568826D2827A00C3793E /* Sources */,
 				B5231D4E26D26176009542D3 /* Shared */,
 				B5231D3C26D260B1009542D3 /* Viewer_macOS */,
 				B5231D5926D2630B009542D3 /* SampleLogger_iOS */,
 				B5231D3B26D260B1009542D3 /* Products */,
+				B5E0F8DD26D40F4C00136511 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +148,7 @@
 				B5231D5026D26176009542D3 /* ServerConnection.swift */,
 				B5231D7026D3B4DA009542D3 /* ServerConnection+Parsing.swift */,
 				B5231D5126D26176009542D3 /* Server.swift */,
+				B5E0F8D926D3D9FE00136511 /* Server+Advertising.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -174,10 +185,19 @@
 			isa = PBXGroup;
 			children = (
 				B5231D6726D263D3009542D3 /* SimpleLogger.swift */,
+				B5E0F8DB26D3DE3100136511 /* SimpleLogger+Browsing.swift */,
 				B5C9568A26D282AA00C3793E /* SimpleLogger.Message.swift */,
 				B5C9568C26D284B900C3793E /* SimpleLogger.DeviceInfo.swift */,
 			);
 			path = SimpleLog;
+			sourceTree = "<group>";
+		};
+		B5E0F8DD26D40F4C00136511 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5E0F8DE26D40F4C00136511 /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5231D4026D260B1009542D3 /* ContentView.swift in Sources */,
+				B5E0F8DA26D3D9FE00136511 /* Server+Advertising.swift in Sources */,
 				B5231D5226D26176009542D3 /* ServerConnection.swift in Sources */,
 				B5231D5326D26176009542D3 /* Server.swift in Sources */,
 				B5231D6B26D26EF2009542D3 /* MessageCenterScreen.swift in Sources */,
@@ -299,6 +320,7 @@
 				B5C9568D26D284B900C3793E /* SimpleLogger.DeviceInfo.swift in Sources */,
 				B5C9568B26D282AA00C3793E /* SimpleLogger.Message.swift in Sources */,
 				B5231D5B26D2630B009542D3 /* SampleLogger_iOSApp.swift in Sources */,
+				B5E0F8DC26D3DE3100136511 /* SimpleLogger+Browsing.swift in Sources */,
 				B5231D6826D263D3009542D3 /* SimpleLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

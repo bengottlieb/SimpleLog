@@ -12,11 +12,12 @@ struct SimpleLogApp: App {
 	init() {
 		do {
 			try Server.start()
+			Server.instance.advertise()
 		} catch {
 			print("Failed to start server: \(error)")
 		}
 	}
-
+	
 	var body: some Scene {
 		WindowGroup {
 			ContentView()
