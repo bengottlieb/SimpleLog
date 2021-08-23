@@ -8,14 +8,16 @@
 import Foundation
 import Network
 
-class SimpleLogger {
+public class SimpleLogger {
 	static public var instance: SimpleLogger!
 	public static var defaultPort: UInt16 = 8888
 	let queue = DispatchQueue(label: "simpleLoggerQueue")
+	var pendingMessages: [SimpleMessage] = []
+	public var isConnected: Bool { nwConnection.state == .ready }
+	var isPolling = false
 	
-	static public func start(host: String, on port: UInt16 = SimpleLogger.defaultPort) {
+	static public func configure(host: String, on port: UInt16 = SimpleLogger.defaultPort) {
 		instance = SimpleLogger(host: host, port: port)
-		instance.start()
 	}
 	
 	let host: NWEndpoint.Host
@@ -29,7 +31,6 @@ class SimpleLogger {
 	
 	func start() {
 		if nwConnection?.state == .ready { return }
-		print("connection will start")
 		nwConnection = NWConnection(host: self.host, port: self.port, using: .tcp)
 		nwConnection.stateUpdateHandler = connectionStateDidChange(to:)
 		nwConnection.start(queue: queue)
@@ -37,8 +38,11 @@ class SimpleLogger {
 	}
 	
 	func poll(after: TimeInterval = 1) {
+		if isPolling { return }
+		isPolling = true
 		DispatchQueue.main.asyncAfter(deadline: .now() + after) {
 			self.start()
+			if self.isConnected { self.isPolling = false }
 		}
 	}
 	
@@ -46,10 +50,9 @@ class SimpleLogger {
 		switch state {
 		case .waiting(let error):
 			connectionDidFail(error: error)
-			poll(after: 1)
+			if isPolling { poll(after: 1) }
 		case .ready:
-			print("Client connection ready")
-			send("Hello")
+			send(SimpleLogger.Info(), first: true)
 		case .failed(let error):
 			connectionDidFail(error: error)
 		default:
@@ -74,8 +77,31 @@ class SimpleLogger {
 	}
 	
 	func send(_ string: String) {
-		if let data = string.data(using: .utf8) {
-			send(data: data)
+		send(Text(text: string))
+	}
+	
+	func send<Message: SimpleMessage>(_ message: Message, first: Bool = false) {
+		if first {
+			pendingMessages.insert(message, at: 0)
+		} else {
+			pendingMessages.append(message)
+		}
+		if !isConnected {
+			if !isPolling { poll(after: 0.5) }
+		} else {
+			handlePendingMessages()
+		}
+	}
+	
+	func handlePendingMessages() {
+		for message in pendingMessages {
+			if let data = message.data {
+				send(data: data)
+				if !pendingMessages.isEmpty { pendingMessages.remove(at: 0) }
+			} else {
+				print("Failed to send message: \(message)")
+				break
+			}
 		}
 	}
 	

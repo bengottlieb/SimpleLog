@@ -21,6 +21,8 @@
 		B5231D6B26D26EF2009542D3 /* MessageCenterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5231D6926D26EEE009542D3 /* MessageCenterScreen.swift */; };
 		B5231D6D26D26F9F009542D3 /* ConnectionListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5231D6C26D26F9F009542D3 /* ConnectionListRow.swift */; };
 		B5231D6F26D27018009542D3 /* ConnectionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5231D6E26D27018009542D3 /* ConnectionListView.swift */; };
+		B5C9568B26D282AA00C3793E /* SimpleLogger.Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9568A26D282AA00C3793E /* SimpleLogger.Message.swift */; };
+		B5C9568D26D284B900C3793E /* SimpleLogger.DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C9568C26D284B900C3793E /* SimpleLogger.DeviceInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		B5231D6926D26EEE009542D3 /* MessageCenterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCenterScreen.swift; sourceTree = "<group>"; };
 		B5231D6C26D26F9F009542D3 /* ConnectionListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionListRow.swift; sourceTree = "<group>"; };
 		B5231D6E26D27018009542D3 /* ConnectionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionListView.swift; sourceTree = "<group>"; };
+		B5C9568A26D282AA00C3793E /* SimpleLogger.Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLogger.Message.swift; sourceTree = "<group>"; };
+		B5C9568C26D284B900C3793E /* SimpleLogger.DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLogger.DeviceInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 		B5231D3126D260B1009542D3 = {
 			isa = PBXGroup;
 			children = (
+				B5C9568826D2827A00C3793E /* Sources */,
 				B5231D4E26D26176009542D3 /* Shared */,
 				B5231D3C26D260B1009542D3 /* Viewer_macOS */,
 				B5231D5926D2630B009542D3 /* SampleLogger_iOS */,
@@ -136,7 +141,6 @@
 			children = (
 				B5231D5A26D2630B009542D3 /* SampleLogger_iOSApp.swift */,
 				B5231D5C26D2630B009542D3 /* ContentView.swift */,
-				B5231D6726D263D3009542D3 /* SimpleLogger.swift */,
 				B5231D5E26D2630B009542D3 /* Assets.xcassets */,
 				B5231D6326D2630B009542D3 /* Info.plist */,
 				B5231D6026D2630B009542D3 /* Preview Content */,
@@ -150,6 +154,24 @@
 				B5231D6126D2630B009542D3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B5C9568826D2827A00C3793E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B5C9568926D2829000C3793E /* SimpleLog */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B5C9568926D2829000C3793E /* SimpleLog */ = {
+			isa = PBXGroup;
+			children = (
+				B5231D6726D263D3009542D3 /* SimpleLogger.swift */,
+				B5C9568A26D282AA00C3793E /* SimpleLogger.Message.swift */,
+				B5C9568C26D284B900C3793E /* SimpleLogger.DeviceInfo.swift */,
+			);
+			path = SimpleLog;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +288,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5231D5D26D2630B009542D3 /* ContentView.swift in Sources */,
+				B5C9568D26D284B900C3793E /* SimpleLogger.DeviceInfo.swift in Sources */,
+				B5C9568B26D282AA00C3793E /* SimpleLogger.Message.swift in Sources */,
 				B5231D5B26D2630B009542D3 /* SampleLogger_iOSApp.swift in Sources */,
 				B5231D6826D263D3009542D3 /* SimpleLogger.swift in Sources */,
 			);
