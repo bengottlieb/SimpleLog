@@ -8,12 +8,12 @@
 import Foundation
 import Network
 
-public class SimpleLogger {
+public class SimpleLogger: ObservableObject {
 	static public var instance: SimpleLogger!
 	public static var defaultPort: UInt16 = 8888
 	let queue = DispatchQueue(label: "simpleLoggerQueue")
 	var pendingMessages: [SimpleMessage] = []
-	public var isConnected: Bool { nwConnection.state == .ready }
+	public var isConnected: Bool { nwConnection?.state == .ready }
 	var isPolling = false
 	
 	static public func configure(host: String, on port: UInt16 = SimpleLogger.defaultPort) {
@@ -37,12 +37,10 @@ public class SimpleLogger {
 		setupReceive()
 	}
 	
-	func poll(after: TimeInterval = 1) {
-		if isPolling { return }
+	func poll(after: TimeInterval = 1, firstPoll: Bool = false) {
 		isPolling = true
-		DispatchQueue.main.asyncAfter(deadline: .now() + after) {
+		DispatchQueue.main.asyncAfter(deadline: .now() + (firstPoll ? 0.01 : after)) {
 			self.start()
-			if self.isConnected { self.isPolling = false }
 		}
 	}
 	
@@ -50,9 +48,15 @@ public class SimpleLogger {
 		switch state {
 		case .waiting(let error):
 			connectionDidFail(error: error)
-			if isPolling { poll(after: 1) }
+			if isPolling {
+				poll(after: 1)
+			} else {
+				DispatchQueue.main.async { self.objectWillChange.send() }
+			}
 		case .ready:
+			isPolling = false
 			send(SimpleLogger.Info(), first: true)
+			DispatchQueue.main.async { self.objectWillChange.send() }
 		case .failed(let error):
 			connectionDidFail(error: error)
 		default:
@@ -87,7 +91,7 @@ public class SimpleLogger {
 			pendingMessages.append(message)
 		}
 		if !isConnected {
-			if !isPolling { poll(after: 0.5) }
+			if !isPolling { poll(after: 1, firstPoll: true) }
 		} else {
 			handlePendingMessages()
 		}
@@ -128,11 +132,12 @@ public class SimpleLogger {
 	private func connectionDidEnd() {
 		print("connection did end")
 		self.stop(error: nil)
-		self.poll(after: 1)
+		DispatchQueue.main.async { self.objectWillChange.send() }
 	}
 	
 	private func stop(error: Error?) {
 		self.nwConnection.stateUpdateHandler = nil
 		self.nwConnection.cancel()
+		self.nwConnection = nil
 	}
 }

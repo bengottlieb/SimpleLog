@@ -13,7 +13,7 @@ import UIKit
 extension SimpleLogger {
 	
 	public struct Info: SimpleMessage {
-		static var kind: MessageKind { .info }
+		var kind: MessageKind = .info
 		var deviceName: String
 		var deviceKind: String
 		var deviceID: String

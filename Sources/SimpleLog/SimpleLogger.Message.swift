@@ -8,17 +8,18 @@
 import Foundation
 
 protocol SimpleMessage: Codable {
-	static var kind: SimpleLogger.MessageKind { get }
+//	static var kind: SimpleLogger.MessageKind { get }
 }
 
 extension SimpleMessage {
 	var data: Data? {
-		guard let raw = try? JSONSerialization.data(withJSONObject: self, options: []) else { return nil }
-		
-		let kindString = "<\(Self.kind.rawValue)>"
-		guard let kind = kindString.data(using: .utf8) else { return nil }
-
-		return kind + raw
+		guard let raw = try? JSONEncoder().encode(self) else { return nil }
+//
+//		let kindString = "<\(Self.kind.rawValue)>"
+//		guard let kind = kindString.data(using: .utf8) else { return nil }
+//
+//		return kind + raw
+		return raw + ",".data(using: .utf8)!
 	}
 }
 
@@ -28,7 +29,7 @@ extension SimpleLogger {
 	}
 	
 	public struct Text: SimpleMessage {
-		static var kind: MessageKind { .text }
+		var kind: MessageKind = .text
 		let text: String
 	}
 }

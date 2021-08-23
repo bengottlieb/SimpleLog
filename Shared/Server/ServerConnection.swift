@@ -12,9 +12,10 @@ public class ServerConnection: ObservableObject, Identifiable, Comparable {
 	let maxMessageSize = 65536			// max for TCP
 	
 	private static var nextID: Int = 0
-	let connection: NWConnection
+	public var isConnected: Bool { state == .ready }
+	var connection: NWConnection!
 	public let id: Int
-	var state: NWConnection.State { connection.state }
+	var state: NWConnection.State { connection?.state ?? .setup }
 	var receivedMessages: [String] = []
 	
 	init(nwConnection: NWConnection) {
@@ -23,12 +24,10 @@ public class ServerConnection: ObservableObject, Identifiable, Comparable {
 		ServerConnection.nextID += 1
 	}
 	
-	var didStopCallback: ((Error?) -> Void)?
-	
 	func start() {
-		connection.stateUpdateHandler = stateDidChange(to:)
+		connection?.stateUpdateHandler = stateDidChange(to:)
 		setupReceive()
-		connection.start(queue: .main)
+		connection?.start(queue: .main)
 	}
 	
 	private func stateDidChange(to state: NWConnection.State) {
@@ -46,12 +45,9 @@ public class ServerConnection: ObservableObject, Identifiable, Comparable {
 	}
 	
 	private func setupReceive() {
-		connection.receive(minimumIncompleteLength: 1, maximumLength: maxMessageSize) { data, _, isComplete, error in
+		connection?.receive(minimumIncompleteLength: 1, maximumLength: maxMessageSize) { data, _, isComplete, error in
 			if let data = data, !data.isEmpty {
-				if let message = String(data: data, encoding: .utf8) {
-					self.receivedMessages.append(message)
-				}
-				DispatchQueue.main.async { self.objectWillChange.send() }
+				self.parse(data: data)
 			}
 			
 			if isComplete {
@@ -66,7 +62,7 @@ public class ServerConnection: ObservableObject, Identifiable, Comparable {
 	
 	
 	func send(data: Data) {
-		self.connection.send(content: data, completion: .contentProcessed( { error in
+		self.connection?.send(content: data, completion: .contentProcessed( { error in
 			if let error = error {
 				self.connectionDidFail(error: error)
 				return
@@ -74,8 +70,8 @@ public class ServerConnection: ObservableObject, Identifiable, Comparable {
 		}))
 	}
 	
-	func stop() {
-		print("connection \(id) will stop")
+	public func close() {
+		stop(error: nil)
 	}
 	
 	private func connectionDidFail(error: Error) {
@@ -89,12 +85,11 @@ public class ServerConnection: ObservableObject, Identifiable, Comparable {
 	}
 	
 	private func stop(error: Error?) {
-		connection.stateUpdateHandler = nil
-		connection.cancel()
-		if let didStopCallback = didStopCallback {
-			self.didStopCallback = nil
-			didStopCallback(error)
-		}
+		connection?.stateUpdateHandler = nil
+		connection?.cancel()
+		Server.instance.connectionDidStop(self)
+		connection = nil
+		DispatchQueue.main.async { self.objectWillChange.send() }
 	}
 }
 

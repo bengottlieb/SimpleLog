@@ -10,10 +10,25 @@ import SwiftUI
 struct ConnectionListRow: View {
 	@ObservedObject var connection: ServerConnection
 	var body: some View {
-		VStack() {
-			Text("Connection #\(connection.id)")
-			Text(connection.receivedMessages.last ?? "--")
-				.foregroundColor(Color(.secondaryLabelColor))
+		HStack() {
+			VStack() {
+				Text("Connection #\(connection.id)")
+				Text(connection.receivedMessages.last ?? "--")
+					.foregroundColor(Color(.secondaryLabelColor))
+			}
+			.opacity(connection.isConnected ? 1 : 0.25)
+			Spacer()
+			Button(action: {
+				if connection.isConnected {
+					connection.close()
+				} else {
+					Server.instance.remove(connection: connection)
+				}
+			}) {
+				Text(connection.isConnected ? "❌" : "🗑")
+					.padding()
+			}
+			.buttonStyle(PlainButtonStyle())
 		}
 	}
 }

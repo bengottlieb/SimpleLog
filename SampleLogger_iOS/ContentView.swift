@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-	@State var message = ""
+	@ObservedObject var logger = SimpleLogger.instance
+	@State var message = "I'm Heeeere"
 	
 	var body: some View {
 		VStack() {
+			Text("Connected: \(logger.isConnected ? "Yes" : "No")")
 			TextField("Message", text: $message)
 			
-			Button("Send") { SimpleLogger.instance.send(message) }
+			Button("Send") {
+				SimpleLogger.instance.send(message + "1")
+				SimpleLogger.instance.send(message + "2")
+				SimpleLogger.instance.send(message + "3")
+			}
 		}
 		
 		
