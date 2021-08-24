@@ -20,6 +20,7 @@ public class Server: ObservableObject {
 	
 	var allConnections: [ServerConnection] { pastConnections + activeConnections.values.sorted() }
 	var pastConnections: [ServerConnection] = []
+	var hostAddress: String?
 	
 	public static var defaultPort: UInt16 = 8888
 	private var activeConnections: [Int: ServerConnection] = [:]
@@ -39,6 +40,7 @@ public class Server: ObservableObject {
 	init(port: UInt16) {
 		self.port = NWEndpoint.Port(rawValue: port)!
 		listener = try! NWListener(using: .tcp, on: self.port)
+		hostAddress = hostAddresses().first
 	}
 	
 	func start() throws {

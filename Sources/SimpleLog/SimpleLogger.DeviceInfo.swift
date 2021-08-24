@@ -7,7 +7,11 @@
 
 import Foundation
 #if canImport(UIKit)
-import UIKit
+	import UIKit
+#endif
+
+#if canImport(WatchKit)
+	import WatchKit
 #endif
 
 extension SimpleLogger {
@@ -28,7 +32,10 @@ extension SimpleLogger {
 			#endif
 			
 			#if os(watchOS)
-			
+				deviceName = WKInterfaceDevice.current().name
+				deviceKind = WKInterfaceDevice.current().model
+				deviceID = WKInterfaceDevice.current().identifierForVendor?.uuidString ?? ""
+				identifier = Bundle.main.bundleIdentifier ?? "??"
 			#endif
 			
 			#if os(macOS)

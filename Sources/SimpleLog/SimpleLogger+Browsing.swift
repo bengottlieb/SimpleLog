@@ -6,6 +6,14 @@
 //
 
 import Foundation
+
+#if os(watchOS)
+extension SimpleLogger {
+	func browse() {
+		print("Browsing not supported on watchOS")
+	}
+}
+#else
 import MultipeerConnectivity
 
 #if canImport(WatchKit)
@@ -29,13 +37,14 @@ extension SimpleLogger: MCNearbyServiceBrowserDelegate {
 	}
 	
 	func browse() {
-		self.browser = MCNearbyServiceBrowser(peer: self.peerID, serviceType: Self.serviceType)
-		self.browser?.delegate = self
-		self.browser?.startBrowsingForPeers()
+		let browser = MCNearbyServiceBrowser(peer: self.generateLocalPeerID(), serviceType: Self.serviceType)
+		browser.delegate = self
+		browser.startBrowsingForPeers()
+		
+		self.browser = browser
 	}
 	
 	public func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-		print(info)
 		if let host = info?["host"], let portString = info?["port"], let port = UInt16(portString) {
 			load(host: host, port: port)
 		}
@@ -46,3 +55,4 @@ extension SimpleLogger: MCNearbyServiceBrowserDelegate {
 		self.browser = nil
 	}
 }
+#endif

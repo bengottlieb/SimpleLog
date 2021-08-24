@@ -7,7 +7,6 @@
 
 import Foundation
 import Network
-import MultipeerConnectivity
 
 public class SimpleLogger: NSObject, ObservableObject {
 	static public var instance: SimpleLogger!
@@ -16,10 +15,9 @@ public class SimpleLogger: NSObject, ObservableObject {
 	var pendingMessages: [SimpleMessage] = []
 	public var isConnected: Bool { nwConnection?.state == .ready }
 	var isPolling = false
-	lazy var peerID = generateLocalPeerID()
-	var browser: MCNearbyServiceBrowser?
+	var browser: AnyObject?
 
-	static public func configure(host: String? = nil, on port: UInt16? = nil) {
+	static public func setup(host: String? = nil, on port: UInt16 = SimpleLogger.defaultPort) {
 		instance = SimpleLogger(host: host, port: port)
 	}
 	
@@ -27,18 +25,21 @@ public class SimpleLogger: NSObject, ObservableObject {
 	var port: NWEndpoint.Port?
 	var nwConnection: NWConnection!
 	
-	init(host: String?, port: UInt16?) {
+	init(host: String?, port: UInt16) {
 		super.init()
-		if let host = host, let port = port {
+		if let host = host {
 			load(host: host, port: port)
 		} else {
-			browse()
+			#if !watchOS
+				browse()
+			#endif
 		}
 	}
 
 	func load(host: String, port: UInt16) {
 		self.host = NWEndpoint.Host(host)
 		self.port = NWEndpoint.Port(rawValue: port)
+		if !pendingMessages.isEmpty { start() }
 	}
 	
 	func start() {
@@ -92,10 +93,10 @@ public class SimpleLogger: NSObject, ObservableObject {
 		}
 	}
 	
-	func send(_ string: String) {
+	public func log(_ string: String) {
 		send(Text(text: string))
 	}
-	
+		
 	func send<Message: SimpleMessage>(_ message: Message, first: Bool = false) {
 		if first {
 			pendingMessages.insert(message, at: 0)
@@ -122,7 +123,8 @@ public class SimpleLogger: NSObject, ObservableObject {
 	}
 	
 	func send(data: Data) {
-		nwConnection.send(content: data, completion: .contentProcessed( { error in
+		guard let connection = nwConnection else { return }
+		connection.send(content: data, completion: .contentProcessed( { error in
 			if let error = error {
 				self.connectionDidFail(error: error)
 				return

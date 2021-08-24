@@ -11,7 +11,7 @@ import MultipeerConnectivity
 extension Server {
 	static let serviceType = "SAI-SimpleLog"
 	public func advertise() {
-		if let address = hostAddresses().first {
+		if let address = hostAddress {
 			advertiser = MCNearbyServiceAdvertiser(peer: self.peerID, discoveryInfo: ["host": address, "port": "\(port)"], serviceType: Self.serviceType)
 			advertiser?.startAdvertisingPeer()
 		} else {
