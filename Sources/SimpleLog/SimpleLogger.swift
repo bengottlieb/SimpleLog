@@ -8,6 +8,21 @@
 import Foundation
 import Network
 
+#if canImport(Suite)
+import Suite
+public extension SimpleLogger {
+	static func setup(host: String? = nil, on port: UInt16 = SimpleLogger.defaultPort, redirecting: Bool) {
+		setup(host: host, on: port)
+		if redirecting {
+			Logger.instance.redirect { text in
+				SimpleLogger.instance.log(text)
+			}
+		}
+		logg("Welcome to SimpleLogger")
+	}
+}
+#endif
+
 public class SimpleLogger: NSObject, ObservableObject {
 	static public var instance: SimpleLogger!
 	public static var defaultPort: UInt16 = 8888
@@ -18,7 +33,9 @@ public class SimpleLogger: NSObject, ObservableObject {
 	var browser: AnyObject?
 
 	static public func setup(host: String? = nil, on port: UInt16 = SimpleLogger.defaultPort) {
-		instance = SimpleLogger(host: host, port: port)
+		if instance == nil {
+			instance = SimpleLogger(host: host, port: port)
+		}
 	}
 	
 	var host: NWEndpoint.Host?
